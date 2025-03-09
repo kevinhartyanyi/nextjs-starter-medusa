@@ -10,6 +10,8 @@ import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-relat
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import { HttpTypes } from "@medusajs/types"
+import CompareButton from "../components/products-compare/compare-button"
+import CompareDrawer from "../components/products-compare/compare-drawer"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -41,6 +43,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         </div>
         <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
           <ProductOnboardingCta />
+          <CompareButton product={product} />
           <Suspense
             fallback={
               <ProductActions
@@ -54,6 +57,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           </Suspense>
         </div>
       </div>
+      <CompareDrawer />
       <div
         className="content-container my-16 small:my-32"
         data-testid="related-products-container"
